@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.oneyu.cloud.mini.wechat.dao.WxUserDAO">
+    <resultMap id="BaseResultMap" type="WxUser">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <id column="openid" property="openid" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <insert id="create" parameterType="wxuser" useGeneratedKeys="true" keyProperty="id">
+            insert into t_wx_user(openid) values (#{openid})
+    </insert>
+
+    <select id="getUserByOpenId" parameterType="String" resultMap="BaseResultMap">
+        select * from t_wx_user where openid = #{openid}
+    </select>
+</mapper>
