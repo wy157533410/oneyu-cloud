@@ -1,0 +1,24 @@
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource  #当前数据源操作类型
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/wexin?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
+    username: weixin
+    password: weixin
+
+mybatis: 
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.oneyu.cloud.mini.wechat.entity
+  
+#logging:
+#  path: /var/log/oneyu-cloud/mini-wechat-service/log/
+#  levels: info
+  
+ 
+    
+  
+
+
+       
+
