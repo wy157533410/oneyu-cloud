@@ -8,11 +8,10 @@
   <name>oneyu</name>
   <description>oneyu的后端代码</description>
   <modules>
-    <module>oneyu-tools</module>
-    <module>cloud-mini-wechat6792</module>
-    <module>cloud-base</module>
-    <module>www.oneyu.xyz</module>
-    <module>cloud-mini-wechat6793</module>
+    <module>02-oneyu-tools</module>
+    <module>20-cloud-mini-wechat6792</module>
+    <module>01-cloud-base</module>
+    <module>80-www.oneyu.xyz</module>
     <module>10-cloud-gateway-6791</module>
     <module>21-cloud-mini-dingding6793</module>
   </modules>
@@ -106,6 +105,8 @@
                     <addResources>true</addResources>
                 </configuration>
             </plugin>
+            
+            
         </plugins>
     </build>
 
