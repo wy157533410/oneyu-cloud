@@ -1,5 +1,6 @@
 package com.oneyu.cloud.mini.wechat.service;
 
+import com.oneyu.cloud.base.dto.WxMiniPayOrderDTO;
 import com.oneyu.cloud.base.dto.WxUserDTO;
 
 /**
@@ -26,5 +27,9 @@ public interface WechatService {
 	boolean auth(WxUserDTO dto);
 	WxUserDTO login(WxUserDTO req);
 
-	
+	/**
+	 * 创建支付订单
+	 * @return 返回预支付订单号
+	 */
+	String createOrder(WxMiniPayOrderDTO dto);
 }

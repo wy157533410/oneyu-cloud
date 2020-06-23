@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.oneyu.cloud.base.ResultObject;
+import com.oneyu.cloud.base.dto.WxMiniPayOrderDTO;
 import com.oneyu.cloud.base.dto.WxUserDTO;
 import com.oneyu.cloud.mini.wechat.service.WechatService;
 import com.oneyu.tools.SecurityTool;
@@ -36,9 +37,54 @@ public class WechatController {
 	@Autowired
 	WechatService wechatSrv;
 
-	@Value("${wechat.push.token}")
+//	@Value("${wechat.push.token}")
 	private String wxPushToken;
-
+	
+	//========================支付==================================
+	
+	@RequestMapping("/pay/callback")
+	public void payCallback() {
+		log.info("/pay/callback");
+	}
+	
+	/**
+	 * 微信小程序创建订单入口
+	 * @param params
+	 * @return
+	 */
+	@RequestMapping("/pay/mini/createorder")
+	public ResultObject<String> createOrder(String params){
+		log.info("/pay/createorder");
+		WxMiniPayOrderDTO req = JSONUtil.toBean(params, WxMiniPayOrderDTO.class);
+		log.info(req.toString());
+		req.setTradetype("JSAPI");
+		if(!req.isValid()) {
+			return new ResultObject<String>(ResultObject.CODE_PARAM_ERROR, "参数错误");
+		}
+		wechatSrv.createOrder(req);
+		return new ResultObject<String>(ResultObject.CODE_OK, "预支付成功", "prepay_id123456");
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//========================登录授权==================================
 	/**
 	 * 获取用户的openid
 	 * @param params
