@@ -2,34 +2,14 @@ package com.oneyu.cloud.mini.wechat.pay.protocol;
 
 import com.oneyu.cloud.mini.wechat.pay.annotation.ApiResponseField;
 
-public class UnifiedOrderResponse extends WxPayResProtocol {
-	   // 公众账号ID
-    @ApiResponseField("appid")
-    private String appId;
+public class UnifiedOrderResponse extends WxPayReturnSuccess {
 
-    // 微信支付商户号
-    @ApiResponseField("mch_id")
-    private String mchId;
 
-    // 设备号
-    @ApiResponseField("device_info")
-    private String deviceInfo;
 
-    // 随机字符串
-    @ApiResponseField("nonce_str")
-    private String nonceStr;
 
-    // 签名
-    @ApiResponseField("sign")
-    private String sign;
 
-    // 错误代码
-    @ApiResponseField("err_code")
-    private String errCode;
 
-    // 错误代码描述
-    @ApiResponseField("err_code_des")
-    private String errCodeDes;
+
 
     // 以下字段 在return_code 和result_code都为SUCCESS的时候有返回
     // 交易类型 TradeType
@@ -43,62 +23,6 @@ public class UnifiedOrderResponse extends WxPayResProtocol {
     // trade_type为NATIVE是有返回，可将该参数值生成二维码展示出来进行扫码支付
     @ApiResponseField("code_url")
     private String codeUrl;
-
-	public String getAppId() {
-		return appId;
-	}
-
-	public void setAppId(String appId) {
-		this.appId = appId;
-	}
-
-	public String getMchId() {
-		return mchId;
-	}
-
-	public void setMchId(String mchId) {
-		this.mchId = mchId;
-	}
-
-	public String getDeviceInfo() {
-		return deviceInfo;
-	}
-
-	public void setDeviceInfo(String deviceInfo) {
-		this.deviceInfo = deviceInfo;
-	}
-
-	public String getNonceStr() {
-		return nonceStr;
-	}
-
-	public void setNonceStr(String nonceStr) {
-		this.nonceStr = nonceStr;
-	}
-
-	public String getSign() {
-		return sign;
-	}
-
-	public void setSign(String sign) {
-		this.sign = sign;
-	}
-
-	public String getErrCode() {
-		return errCode;
-	}
-
-	public void setErrCode(String errCode) {
-		this.errCode = errCode;
-	}
-
-	public String getErrCodeDes() {
-		return errCodeDes;
-	}
-
-	public void setErrCodeDes(String errCodeDes) {
-		this.errCodeDes = errCodeDes;
-	}
 
 	public String getTradeType() {
 		return tradeType;

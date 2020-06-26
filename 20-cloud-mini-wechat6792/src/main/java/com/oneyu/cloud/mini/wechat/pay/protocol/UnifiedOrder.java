@@ -12,7 +12,7 @@ import com.oneyu.cloud.mini.wechat.pay.annotation.ApiRequestField;
  *
  * @CreateDate  2:39:36 PM Jun 24, 2020
  */
-public class UnifiedOrder extends WxPayReqProtocol{
+public class UnifiedOrder extends WxPayRequest{
 	
 	   // 非必填 设备号  终端设备号(门店号或收银设备ID)，注意：PC网页或公众号内支付请传"WEB"
     @ApiRequestField(value = "device_info", required = false)
@@ -242,6 +242,23 @@ public class UnifiedOrder extends WxPayReqProtocol{
 
 	public void setOpenId(String openId) {
 		this.openId = openId;
+	}
+
+
+	@Override
+	public String toString() {
+		return "UnifiedOrder [deviceInfo=" + deviceInfo + ", body=" + body + ", detail=" + detail + ", attach=" + attach
+				+ ", outTradeNo=" + outTradeNo + ", feeType=" + feeType + ", totalFee=" + totalFee + ", spbillCreateIp="
+				+ spbillCreateIp + ", timeStart=" + timeStart + ", timeExpire=" + timeExpire + ", goodsTag=" + goodsTag
+				+ ", notifyUrl=" + notifyUrl + ", tradeType=" + tradeType + ", productId=" + productId + ", limitPay="
+				+ limitPay + ", openId=" + openId + ", appId=" + appId + ", nonceStr=" + nonceStr + ", mchId=" + mchId
+				+ "]";
+	}
+
+
+	@Override
+	public WxPayResponse response() {
+		return new UnifiedOrderResponse();
 	}
 	
 	

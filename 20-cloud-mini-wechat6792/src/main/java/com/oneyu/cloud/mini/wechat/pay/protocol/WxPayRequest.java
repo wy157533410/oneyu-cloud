@@ -27,7 +27,7 @@ import lombok.extern.slf4j.Slf4j;
  * @CreateDate  2:40:28 PM Jun 24, 2020
  */
 @Slf4j
-public abstract class WxPayReqProtocol {
+public abstract class WxPayRequest implements WxPayProtocol {
 
     /**
      * 协议是否需要证书，默认不需要
@@ -43,6 +43,8 @@ public abstract class WxPayReqProtocol {
 	 * @return
 	 */
 	public abstract String action();
+	
+	public abstract WxPayResponse response();
 	
 	/**
 	 * 签名类型，默认为MD5，支持HMAC-SHA256和MD5
@@ -74,7 +76,7 @@ public abstract class WxPayReqProtocol {
     private Map<String, String> convert() throws WechatPayException {
         Map<String, String> data = new HashMap<String, String>();
         try {
-            Class<? extends WxPayReqProtocol> clazz = getClass();
+            Class<? extends WxPayRequest> clazz = getClass();
             BeanInfo beanInfo = Introspector.getBeanInfo(clazz);
             PropertyDescriptor[] pds = beanInfo.getPropertyDescriptors();
             for (PropertyDescriptor pd : pds) {
@@ -128,7 +130,7 @@ public abstract class WxPayReqProtocol {
     // 校验 支付参数
        private void validate() throws WechatPayException {
            try {
-               Class<? extends WxPayReqProtocol> clazz = getClass();
+               Class<? extends WxPayRequest> clazz = getClass();
                BeanInfo beanInfo = Introspector.getBeanInfo(clazz);
                PropertyDescriptor[] pds = beanInfo.getPropertyDescriptors();
                for (PropertyDescriptor pd : pds) {
